@@ -2,7 +2,7 @@ name: Run Daily Script
 
 on:
   schedule:
-    - cron: '21 15 * * *'  # 15:14 London = 14:14 UTC
+    - cron: '*/1 * * * *'
   workflow_dispatch:      # Optional: allows manual triggering
 
 jobs:
