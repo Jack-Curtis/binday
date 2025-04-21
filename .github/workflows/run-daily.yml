@@ -2,7 +2,7 @@ name: Run Daily Script
 
 on:
   schedule:
-    - cron: '0 14 * * *'  # 8 PM London = 19:00 UTC
+    - cron: '5 15 * * *'  # 8 PM London = 19:00 UTC
   workflow_dispatch:      # Optional: allows manual triggering
 
 jobs:
