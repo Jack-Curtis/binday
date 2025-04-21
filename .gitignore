@@ -11,5 +11,7 @@ local_test_results
 remote_test_results
 
 node_modules/
+node_modules
+/node_modules/
 .env
 coverage/
