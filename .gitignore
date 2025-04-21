@@ -1,0 +1,15 @@
+# OS and IDE
+.DS_Store
+.idea
+
+# Test Evolve tmp files
+ci_config/tmp/
+
+# Test Evolve results
+results
+local_test_results
+remote_test_results
+
+node_modules/
+.env
+coverage/

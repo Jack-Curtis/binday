@@ -1,0 +1,31 @@
+enabled: false
+source: applitools
+
+applitools:
+
+  branch: branch
+  match_level: Layout2           # None, Layout, Layout2, Content, Strict, Exact
+
+  stitch_mode: css               # css, scroll
+
+  fullpage_screenshot: true
+
+  save_new_tests: false
+  save_failed_tests: false
+  hide_scrollbars: true
+
+  scale_ratio: 1               # can be left blank or set to a number
+  match_timeout: 500           # must be an integer and set >= 500ms
+
+  wait_before_screenshots: 50  # required - must be an integer > 0
+
+  app_name: Your Application or website
+
+  viewport_size:
+    width: 800
+    height: 600
+
+percy:
+  branch: test
+  widths: [800, 1200]
+  debug: false

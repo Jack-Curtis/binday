@@ -1,0 +1,23 @@
+failure_screenshots: true
+
+local:
+
+  html_report: true
+  realtime_failure: false
+  junit: false
+  json: false
+  rerun: false
+
+dashboard:
+  enabled: false
+  project_id: 1
+  label: spark-example-tests
+  auth_token: Your Organisation API Key
+  scheduled_updates: false
+  scheduled_interval: 10
+
+testrail:
+  enabled: false
+  domain: example-domain
+  project_id: 1
+  test_run_id: 0

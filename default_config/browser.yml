@@ -1,0 +1,117 @@
+source: local # local, browserstack
+
+default_timeout: 10
+implicit_wait: 5
+page_load_timeout: 10
+
+same_browser: true
+close_browser: true
+
+local:
+  platform: desktop # desktop, mobile, tablet
+
+  desktop:
+    browser: chrome # chrome, firefox, safari, edge
+    maximise: true # true, false
+    resize: false # true, false
+    breakpoint:
+      width: 800
+      height: 600
+
+  mobile:
+    browser: chrome # chrome, firefox
+    device: iPhone 8  # firefox devices - iphone, ipad, android_phone, android_tablet
+                      # chrome devices - use a valid chrome device eg. iPhone X
+
+browserstack:
+  platform: mobile # desktop, mobile
+
+  local_testing: false
+  browserstack_debug: true
+  test_name: Regression Tests
+  browserstack_options: []
+
+  desktop:
+    browser: Chrome
+    browser_version: latest
+    platform: Windows
+    platform_version: 10
+    resolution: 1024x768
+
+    maximise: true
+    resize: false
+    breakpoint:
+      width: 800
+      height: 600
+
+  mobile:
+    browser_name: Safari
+    platform: MAC
+    device: iPhone 11
+    os_version: 13.3
+    orientation: portrait
+
+kobiton:
+  session_name: Regression Tests
+  session_description: Regression Test description
+  capture_screenshots: true
+
+  mobile:
+    device: iPhone 11
+    orientation: portrait
+    browser: safari
+    platform_name: iOS
+    platform_version: 14.4  
+
+sauce_labs:  
+  platform: desktop # desktop, mobile
+  test_name: Regression Tests
+  desktop:    
+    platform: Windows 7    
+    browser: Chrome    
+    browser_version: 45    
+    resolution: 1024x768
+    maximise: true # true, false    
+    resize: false # true, false    
+    breakpoint:      
+      width: 800      
+      height: 600
+  mobile:    
+    appium: 1.6.0    
+    device: iPhone 7   
+    orientation: portrait    
+    platform_version: 10.0    
+    platform_name: iOS    
+    browser: Safari
+
+lambda_test:
+  platform: desktop # desktop, mobile
+  lambda_test_options: [ ]
+  desktop:
+    browser: Chrome
+    browser_version: 120
+    platform: Windows 10
+    maximise: true # true, false
+    resize: false # true, false
+    breakpoint:
+      width: 800
+      height: 600
+  mobile:
+    browser: Safari
+    device: iPhone 12
+    os: ios
+    os_version: 14
+
+chrome:
+  version: default
+  jmeter: false
+  owasp_zap: false
+  custom_options: []
+  download_location: default
+
+firefox:
+  version: default
+
+edge:
+  version: default
+  download_location: default

@@ -1,0 +1,6 @@
+local:
+  site_path: /demo_site/
+
+qa1:
+  example_site: www.testevolve.co.uk
+  wikipedia_site: https://en.wikipedia.org/wiki/Main_Page

@@ -1,0 +1,24 @@
+{
+  "name": "test-evolve-project",
+  "version": "1.0.0",
+  "description": "An example Test Evolve project",
+  "dependencies": {
+    "@babel/core": "^7.2.2",
+    "@babel/polyfill": "^7.2.5",
+    "@babel/preset-env": "^7.3.1",
+    "@babel/register": "^7.0.0",
+    "@testevolve/testevolve-spark": "npm:@testevolve/testevolve-js-spark-free",
+    "axios": "^1.8.4",
+    "dotenv": "^16.5.0",
+    "moment": "^2.30.1"
+  },
+  "scripts": {
+    "test:examples": "CONFIG_DIR=ci_config/examples ./node_modules/.bin/cucumber-js --require-module @babel/register --require-module @babel/polyfill --parallel 2 --tags '@examples'",
+    "test:examples:windows": "SET CONFIG_DIR=ci_config/examples && .\\node_modules\\.bin\\cucumber-js --require-module @babel/register --require-module @babel/polyfill --parallel 2 --tags \"@examples\"",
+    "test": "./node_modules/.bin/cucumber-js --require-module @babel/register --require-module @babel/polyfill",
+    "test:windows": ".\\node_modules\\.bin\\cucumber-js --require-module @babel/register --require-module @babel/polyfill",
+    "rerun": "./node_modules/.bin/cucumber-js --require-module @babel/register --require-module @babel/polyfill ./remote_test_results/rerun/@rerun.log",
+    "rerun:windows": ".\\node_modules\\.bin\\cucumber-js --require-module @babel/register --require-module @babel/polyfill ./remote_test_results/rerun/@rerun.log"
+  },
+  "type": "commonjs"
+}

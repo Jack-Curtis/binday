@@ -1,0 +1,31 @@
+applitools:
+  api_key: api_key
+
+browserstack:
+  username: Your Username
+  access_key: Your Access Key
+
+kobiton:
+  username: Your Username
+  api_key: api_key  
+
+percy:
+  api_key: api_key
+
+sauce_labs:  
+  domain: Your Domain  
+  username: Your Username  
+  access_key: Your Access Key  
+
+perfecto:
+  username:  Your Username
+  password:  Your Password
+  cloud_url: Your Cloud URL
+
+testrail:
+  username: Your Username
+  password: Your Password
+
+lambda_test:
+  username: Your Username
+  access_key: Your Access Key

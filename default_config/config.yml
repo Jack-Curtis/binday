@@ -1,0 +1,7 @@
+
+global:
+  environment: local
+
+  test_types: [browser] # browser
+
+  logging_severity: info
