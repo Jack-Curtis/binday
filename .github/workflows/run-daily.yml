@@ -6,23 +6,55 @@ on:
   workflow_dispatch:      # Optional: allows manual triggering
 
 jobs:
-  run-script:
+  build:
+    name: TestEvolve Regression in te-runner
     runs-on: ubuntu-latest
+    env:
+      testevolve-dir: "./"
+      TE_HALO_AUTH_TOKEN: ${{ secrets.TESTEVOLVE_DASHBOARD_API_KEY }}
+
+    container:
+      image: gcr.io/test-evolve-prod/spark/te-runner:latest
+      options: --user 1001
 
     steps:
-      - name: Checkout Repo
-        uses: actions/checkout@v3
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'
-
-      - name: Install Dependencies
-        run: npm install
-
-      - name: Run Script
-        env:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Start Browser
+        run: |
+          sh /usr/local/bin/startx.sh &
+      - name: Set npm registry
+        working-directory: ${{env.testevolve-dir}}
+        run: |
+          npm config set @testevolve:registry https://oxy.jfrog.io/artifactory/api/npm/spark-js
+      - name: Install dependencies
+        working-directory: ${{env.testevolve-dir}}
+        run: |
+          npm i
+      - name: Run tests
+        working-directory: ${{env.testevolve-dir}}
+        env: 
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-        run: npm run test
+        run: |
+          npm test
+  # run-script:
+  #   runs-on: ubuntu-latest
+
+  #   steps:
+  #     - name: Checkout Repo
+  #       uses: actions/checkout@v3
+
+  #     - name: Setup Node.js
+  #       uses: actions/setup-node@v3
+  #       with:
+  #         node-version: '18'
+
+  #     - name: Install Dependencies
+  #       run: npm install
+
+  #     - name: Run Script
+  #       env:
+  #         TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+  #         TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+  #       run: npm run test
