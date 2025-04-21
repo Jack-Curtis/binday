@@ -38,7 +38,7 @@ Then(/^Send all the collection dates$/, async () => {
   thisMonthsEventsDetails.forEach(detail => {
     const eventDatetime = moment(new Date(detail.date)).endOf("day");
     const isTomorrow = tomorrow.diff(eventDatetime, "days") === 0;
-    const isThisWeek = eventDatetime.diff(today, "days") <= 7 && eventDatetime.diff(today, "days") >= 0 && today.day() === 1;
+    const isThisWeek = eventDatetime.diff(today, "days") <= 7 && eventDatetime.diff(today, "days") >= 0 && today.day() === 0;
 
     if (isThisWeek) console.log(`The ${detail.type} gets collected on ${eventDatetime.format("dddd")}`);
     if (isThisWeek) sendTelegramMessage(`The ${detail.type} gets collected on ${eventDatetime.format("dddd")}`)
@@ -60,7 +60,7 @@ Then(/^Send all the collection dates$/, async () => {
   nextMonthsEventsDetails.forEach(detail => {
     const eventDatetime = moment(new Date(detail.date)).endOf("day");
     const isTomorrow = tomorrow.diff(eventDatetime, "days") === 0;
-    const isThisWeek = eventDatetime.diff(today, "days") <= 7 && eventDatetime.diff(today, "days") >= 0  && today.day() === 1;
+    const isThisWeek = eventDatetime.diff(today, "days") <= 7 && eventDatetime.diff(today, "days") >= 0  && today.day() === 0;
 
     if (isThisWeek) console.log(`The ${detail.type} gets collected on ${eventDatetime.format("dddd")}`);
     if (isThisWeek) sendTelegramMessage(`The ${detail.type} gets collected on ${eventDatetime.format("dddd")}`)
