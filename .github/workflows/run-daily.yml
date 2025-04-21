@@ -2,12 +2,12 @@ name: Run Daily Script
 
 on:
   schedule:
-    - cron: '10 14 * * *'  # 8 PM London = 19:00 UTC
+    - cron: '14 14 * * *'  # 15:14 London = 14:14 UTC
   workflow_dispatch:      # Optional: allows manual triggering
 
 jobs:
   build:
-    name: TestEvolve Regression in te-runner
+    name: Run Binday script
     runs-on: ubuntu-latest
     env:
       testevolve-dir: "./"
@@ -20,41 +20,25 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+
       - name: Start Browser
         run: |
           sh /usr/local/bin/startx.sh &
+
       - name: Set npm registry
         working-directory: ${{env.testevolve-dir}}
         run: |
           npm config set @testevolve:registry https://oxy.jfrog.io/artifactory/api/npm/spark-js
+
       - name: Install dependencies
         working-directory: ${{env.testevolve-dir}}
         run: |
           npm i
+
       - name: Run tests
         working-directory: ${{env.testevolve-dir}}
-        env: 
+        env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: |
           npm test
-  # run-script:
-  #   runs-on: ubuntu-latest
-
-  #   steps:
-  #     - name: Checkout Repo
-  #       uses: actions/checkout@v3
-
-  #     - name: Setup Node.js
-  #       uses: actions/setup-node@v3
-  #       with:
-  #         node-version: '18'
-
-  #     - name: Install Dependencies
-  #       run: npm install
-
-  #     - name: Run Script
-  #       env:
-  #         TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-  #         TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-  #       run: npm run test
