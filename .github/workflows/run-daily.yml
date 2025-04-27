@@ -2,8 +2,6 @@ name: Run Daily Script
 
 on:
   push:
-  schedule:
-    - cron: '* */24 * * *'
   workflow_dispatch:      # Optional: allows manual triggering
 
 jobs:
